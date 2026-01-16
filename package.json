@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "Playwright Advanced  test automation",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "npx playwright test",
+    "test:sanity": "npx playwright test --grep @sanity"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/EnwerMemet/Playwright-Test-Automation---SauceLab.git"
