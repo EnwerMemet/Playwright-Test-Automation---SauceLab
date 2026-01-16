@@ -1,0 +1,7 @@
+📂 The Plan: Building the Framework
+
+pages/: Where we store the "logic" of the website (selectors and actions).
+
+tests/: Where we store the actual "test scenarios."
+
+

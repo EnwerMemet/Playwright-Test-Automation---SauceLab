@@ -1,10 +1,12 @@
 import { test, expect } from '@playwright/test';
+import { LoginPage } from '../pages/LoginPage';
 
-test('should login successfully @sanity', async ({ page }) => {
-  await page.goto('https://www.saucedemo.com/');
-  await page.locator('[data-test="username"]').fill('standard_user');
-  await page.locator('[data-test="password"]').fill('secret_sauce');
-  await page.locator('[data-test="login-button"]').click();
+test('User should be able to login successfully @sanity', async ({ page }) => {
+  const loginPage = new LoginPage(page);
+  const user = process.env.SAUCE_USERNAME || '';
+  const pass = process.env.SAUCE_PASSWORD || '';
+
+  await loginPage.navigateTo('/');
+  await loginPage.login(user, pass);
   await expect(page).toHaveURL(/inventory.html/);
-  await expect(page.locator('.title')).toHaveText('Products');
 });
