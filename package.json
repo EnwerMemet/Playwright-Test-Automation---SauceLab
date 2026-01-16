@@ -1,0 +1,25 @@
+{
+  "name": "playwright-test-automation---saucelab",
+  "version": "1.0.0",
+  "description": "Playwright Advanced  test automation",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EnwerMemet/Playwright-Test-Automation---SauceLab.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EnwerMemet/Playwright-Test-Automation---SauceLab/issues"
+  },
+  "homepage": "https://github.com/EnwerMemet/Playwright-Test-Automation---SauceLab#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.57.0",
+    "@types/node": "^25.0.9"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3"
+  }
+}
