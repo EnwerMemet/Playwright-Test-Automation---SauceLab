@@ -5,3 +5,7 @@ pages/: Where we store the "logic" of the website (selectors and actions).
 tests/: Where we store the actual "test scenarios."
 
 
+
+To run only Sanity tests: npx playwright test --grep @sanity
+
+To run everything EXCEPT Sanity: npx playwright test --grep-invert @sanity
