@@ -9,12 +9,16 @@ export default defineConfig({
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
-  reporter: 'html',
+  reporter: [
+    ['html'], 
+    ['allure-playwright', { outputFolder: 'allure-results' }]
+  ],
+  
   use: {
     baseURL: 'https://www.saucedemo.com',
-    trace: 'on-first-retry',
-    screenshot: 'only-on-failure',
-    video: 'on-first-retry',
+    trace: 'on',
+    screenshot: 'on',
+    video: 'retain-on-failure',
   },
   projects: [
     { name: 'chromium', use: { ...devices['Desktop Chrome'] } },

@@ -1,0 +1,7 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","421","Login page should show error for locked out user @regression","chromium","Sat Jan 17 15:59:57 CET 2026","passed","Sat Jan 17 15:59:57 CET 2026","","login.sanity.spec.ts","",""
+"","1032","User should be able to add item to cart and checkout successfully @sanity @regression","chromium","Sat Jan 17 15:59:55 CET 2026","passed","Sat Jan 17 15:59:57 CET 2026","","addCart.sanity.spec.ts","",""
+"","627","should perform full CRUD lifecycle","chromium","Sat Jan 17 15:59:55 CET 2026","passed","Sat Jan 17 15:59:56 CET 2026","Complete API CRUD Operations","API/api.spec.ts","",""
+"","596","User should be able to login successfully @sanity @regression","chromium","Sat Jan 17 15:59:56 CET 2026","passed","Sat Jan 17 15:59:57 CET 2026","","login.sanity.spec.ts","",""
+"","1093","get started link","chromium","Sat Jan 17 15:59:55 CET 2026","passed","Sat Jan 17 15:59:57 CET 2026","","example.spec.ts","",""
+"","922","has title","chromium","Sat Jan 17 15:59:55 CET 2026","passed","Sat Jan 17 15:59:56 CET 2026","","example.spec.ts","",""

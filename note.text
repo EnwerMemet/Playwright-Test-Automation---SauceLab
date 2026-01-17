@@ -10,6 +10,8 @@ To run only Sanity tests: npx playwright test --grep @sanity
 
 To run everything EXCEPT Sanity: npx playwright test --grep-invert @sanity
 
+To see allure -report npx allure serve allure-results   
+
 
 Component	        Status	        Purpose
 BasePage	         ✅	           Handles the browser instance and core navigation.
