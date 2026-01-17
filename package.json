@@ -1,7 +1,6 @@
 {
   "name": "playwright-test-automation---saucelab",
   "version": "1.0.0",
-  "type": "module",
   "description": "Playwright Advanced  test automation",
   "main": "index.js",
   "scripts": {
