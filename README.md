@@ -9,6 +9,7 @@
 * **Core Stack:** Playwright, TypeScript, Node.js
 * **Architecture:** Page Object Model (POM)
 * **Execution:** Parallel Cross-browser (Chromium, Firefox, Webkit)
+* **Reporting Suite:** Allure Dashboards, GitHub Actions, Playwright HTML
 
 ---
 
@@ -39,7 +40,7 @@
 * **Languages:** TypeScript / JavaScript (CommonJS)
 * **Testing Types:** UI, API, Integration, Regression, Sanity
 * **DevOps:** GitHub Actions, YAML, Linux Cloud Runners
-* **Debugging:** Playwright Trace Viewer, HTML Reporting, Network Interception
+* **Debugging:** Playwright Trace Viewer, HTML Reporting, Allure rpeporting, Network Interception
 
 ---
 
