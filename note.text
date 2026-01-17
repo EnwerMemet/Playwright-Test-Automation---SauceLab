@@ -20,6 +20,8 @@ GitHub CI/CD	     ✅	           Runs tests automatically using GitHub Secrets.
 
 ---
 
+
+
 Key Technical Skills Acquired
 
 . Type-Safe Automation: Built a robust suite using TypeScript for better refactoring and error catching.
@@ -37,3 +39,5 @@ Key Technical Skills Acquired
 . Data Strategy: Engineered a Dynamic Data Generator to eliminate test data collisions.
 
 . Observability: Integrated HTML Reporting and Trace Viewing for cloud-based debugging.
+
+
