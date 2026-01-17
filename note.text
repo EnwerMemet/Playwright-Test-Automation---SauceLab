@@ -17,3 +17,23 @@ LoginPage	         ✅	           Contains all selectors and login logic (POM).
 InventoryPage	     ✅	           Manages the product dashboard elements.
 Playwright Config	 ✅	           Manages baseURL and .env loading.
 GitHub CI/CD	     ✅	           Runs tests automatically using GitHub Secrets.
+
+---
+
+Key Technical Skills Acquired
+
+. Type-Safe Automation: Built a robust suite using TypeScript for better refactoring and error catching.
+
+. Scalable Architecture: Implemented Page Object Model (POM) to ensure low-maintenance test code.
+
+. Infrastructure as Code: Developed a GitHub Actions YAML pipeline for continuous integration.
+
+. Cross-Browser Testing: Orchestrated simultaneous execution on Chromium, Firefox, and Webkit.
+
+. Test Suite Optimization: Utilized Parallelism and Tagging (@sanity / @regression) to manage execution speed and scope.
+
+. Security Best Practices: Secured credentials using Environment Variables and GitHub Secrets.
+
+. Data Strategy: Engineered a Dynamic Data Generator to eliminate test data collisions.
+
+. Observability: Integrated HTML Reporting and Trace Viewing for cloud-based debugging.
