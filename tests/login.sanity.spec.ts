@@ -10,6 +10,25 @@ test('User should be able to login successfully @sanity @regression', async ({ p
   await expect(page).toHaveURL(/inventory.html/);
 });
 
+test('API Login with Password bypass', async ({ page, context, request }) => {
+  const loginPage = new LoginPage(page);
+  const user = process.env.SAUCE_USERNAME || '';
+  const pass = process.env.SAUCE_PASSWORD || '';
+
+  await request.post('/api/login', {
+    data: { username: user, password: pass }
+  });
+
+  await context.addCookies([{
+    name: 'session-username',
+    value: user,
+    domain: 'www.saucedemo.com',
+    path: '/'
+  }]);
+
+  await loginPage.navigateTo('/inventory.html');
+  await expect(page.locator('.title')).toHaveText('Products');
+});
 
 test('Login page should show error for locked out user @regression', async ({ page }) => {
   const loginPage = new LoginPage(page);

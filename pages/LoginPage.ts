@@ -1,4 +1,4 @@
-import { Locator, Page } from '@playwright/test';
+import { Locator, Page, BrowserContext } from '@playwright/test';
 import { BasePage } from './BasePage'; 
 
 // 1. 'extends' tells TypeScript that LoginPage is a "child" of BasePage
@@ -22,4 +22,12 @@ export class LoginPage extends BasePage {
     await this.passwordInput.fill(pass);
     await this.loginButton.click();
   }
+  async loginViaCookie(context: BrowserContext, username: string) {
+    await context.addCookies([{
+        name: 'session-username',
+        value: username,
+        domain: 'www.saucedemo.com',
+        path: '/'
+    }]);
+}
 }
