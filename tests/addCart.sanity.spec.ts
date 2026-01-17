@@ -4,7 +4,6 @@ import { InventoryPage } from '../pages/InventoryPage';
 import { CheckoutPage } from '../pages/CheckoutPage';
 import { CartPage } from '../pages/CartPage';
 import { OverviewPage } from '../pages/OverviewPage';
-import { faker } from '@faker-js/faker/locale/en';
 
 test('User should be able to add item to cart and checkout successfully @sanity @regression', async ({ page }) => {
     const loginPage = new LoginPage(page);
@@ -33,9 +32,10 @@ test('User should be able to add item to cart and checkout successfully @sanity 
     console.log('✅ Cart validated and checkout clicked');
 
     // --- STEP 4: CUSTOMER INFO ---
-    const fName = faker.person.firstName();
-    const lName = faker.person.lastName();
-    const zip = faker.location.zipCode();
+    const suffix = Math.floor(Math.random() * 1000); 
+    const fName = `User${suffix}`;
+    const lName = `Tester${suffix}`;
+    const zip = `123${suffix}`;
     await checkoutPage.fillInformation(fName, lName, zip);
     console.log(`✅ Form filled for: ${fName} ${lName}`);
 
