@@ -9,3 +9,11 @@ tests/: Where we store the actual "test scenarios."
 To run only Sanity tests: npx playwright test --grep @sanity
 
 To run everything EXCEPT Sanity: npx playwright test --grep-invert @sanity
+
+
+Component	        Status	        Purpose
+BasePage	         ✅	           Handles the browser instance and core navigation.
+LoginPage	         ✅	           Contains all selectors and login logic (POM).
+InventoryPage	     ✅	           Manages the product dashboard elements.
+Playwright Config	 ✅	           Manages baseURL and .env loading.
+GitHub CI/CD	     ✅	           Runs tests automatically using GitHub Secrets.
