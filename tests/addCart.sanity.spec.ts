@@ -4,7 +4,7 @@ import { InventoryPage } from '../pages/InventoryPage';
 import { CheckoutPage } from '../pages/CheckoutPage';
 import { CartPage } from '../pages/CartPage';
 import { OverviewPage } from '../pages/OverviewPage';
-import { faker } from '@faker-js/faker';
+import { faker } from '@faker-js/faker/locale/en';
 
 test('User should be able to add item to cart and checkout successfully @sanity @regression', async ({ page }) => {
     const loginPage = new LoginPage(page);
