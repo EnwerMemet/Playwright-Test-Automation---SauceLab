@@ -16,9 +16,9 @@ export default defineConfig({
   
   use: {
     baseURL: 'https://www.saucedemo.com',
-    trace: 'on',
-    screenshot: 'on',
+    screenshot: 'only-on-failure',
     video: 'retain-on-failure',
+    trace: 'retain-on-failure',
   },
   projects: [
     { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
