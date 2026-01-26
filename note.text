@@ -43,3 +43,5 @@ Key Technical Skills Acquired
 . Observability: Integrated HTML Reporting and Trace Viewing for cloud-based debugging.
 
 
+npx allure serve allure-results
+
