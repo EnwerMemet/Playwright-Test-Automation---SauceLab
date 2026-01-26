@@ -9,7 +9,7 @@
 * **Core Stack:** Playwright, TypeScript, Node.js
 * **Architecture:** Page Object Model (POM)
 * **Execution:** Parallel Cross-browser (Chromium, Firefox, Webkit)
-* **Reporting Suite:** Allure Dashboards, GitHub Actions, Playwright HTML
+* **Reporting Suite:** BDD-Style Allure Reports Dashboards, GitHub Actions, Playwright HTML
 
 ---
 
@@ -46,7 +46,7 @@
 
 ### 📂 Repository Structure
 
-* `tests/UI/` — User journey and interface validation.
+* `tests/` — User journey and interface validation.
 * `tests/API/` — Backend service and data integrity checks.
 * `pages/` — Reusable Page Object classes.
 * `.github/workflows/` — Automation pipeline configuration.
