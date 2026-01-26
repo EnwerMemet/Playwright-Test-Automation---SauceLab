@@ -1,0 +1,6 @@
+[
+    { "username": "standard_user", "description": "Valid User", "shouldSucceed": true },
+    { "username": "locked_out_user", "description": "Locked User", "shouldSucceed": false, "error": "Epic sadface: Sorry, this user has been locked out." },
+    { "username": "invalid_user", "description": "Non-existent User", "shouldSucceed": false, "error": "Epic sadface: Username and password do not match any user in this service" },
+    { "username": "problem_user", "description": "Performance/UI Glitch User", "shouldSucceed": true }
+  ]
