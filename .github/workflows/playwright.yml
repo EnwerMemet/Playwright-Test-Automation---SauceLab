@@ -49,3 +49,12 @@ jobs:
         name: playwright-report
         path: playwright-report/
         retention-days: 30
+
+    # Allure results to be saved on GitHub as well    
+    - name: Upload Allure Results
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: allure-results
+        path: allure-results/
+        retention-days: 15
