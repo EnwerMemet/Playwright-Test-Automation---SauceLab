@@ -10,6 +10,7 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   reporter: [
+    ['line'], // Shows progress in terminal
     ['html'], 
     ['allure-playwright', { outputFolder: 'allure-results' }]
   ],

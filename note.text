@@ -44,4 +44,7 @@ Key Technical Skills Acquired
 
 
 npx allure serve allure-results
+npm allure open 
+
+
 
