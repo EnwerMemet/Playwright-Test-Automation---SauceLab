@@ -1,0 +1,27 @@
+[
+  { 
+    "username": "standard_user", 
+    "description": "Valid User", 
+    "shouldSucceed": true,
+    "tags": ["valid", "standard", "functional"]
+  },
+  { 
+    "username": "locked_out_user", 
+    "description": "Locked User", 
+    "shouldSucceed": false, 
+    "error": "Epic sadface: Sorry, this user has been locked out.",
+    "tags": ["locked", "security", "error-handling"]
+  },
+  { 
+    "username": "performance_glitch_user", 
+    "description": "Performance Glitch User", 
+    "shouldSucceed": true,
+    "tags": ["performance", "slow", "glitch"]
+  },
+  { 
+    "username": "problem_user", 
+    "description": "Problem User", 
+    "shouldSucceed": true,
+    "tags": ["problem", "ui-issues", "visual"]
+  }
+]

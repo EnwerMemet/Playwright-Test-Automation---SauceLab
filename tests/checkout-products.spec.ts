@@ -2,17 +2,27 @@ import { test, expect } from '../lib/fixtures';
 import * as allure from "allure-js-commons";
 import products from '../data/products.json';
 
-products.forEach((product) => {
-    test(`E2E Checkout Flow for: ${product.name}`, async ({ 
-        loginPage, 
-        inventoryPage, 
-        cartPage, 
-        checkoutPage, 
-        overviewPage, 
-        page 
-    }) => {
+test.describe('@checkout Product Purchase Flow', () => {
+    test.beforeEach(async () => {
+        await allure.epic("E-commerce");
+        await allure.feature("Checkout Process");
         await allure.owner("Enwer");
-        await allure.parameter("Product Name", product.name);
+        await allure.tags("checkout", "e2e", "products", "data-driven");
+    });
+
+    products.forEach((product) => {
+        test(`E2E Checkout Flow for: ${product.name} @sanity @regression`, async ({ 
+            loginPage, 
+            inventoryPage, 
+            cartPage, 
+            checkoutPage, 
+            overviewPage, 
+            page 
+        }) => {
+            await allure.owner("Enwer");
+            await allure.parameter("Product Name", product.name);
+            await allure.parameter("Product Price", product.price);
+            await allure.story("Product Purchase Journey");
 
         await test.step('Given I log into the application', async () => {
             await loginPage.navigateTo('/');
@@ -37,6 +47,7 @@ products.forEach((product) => {
         await test.step('Then the order should be successful', async () => {
             await overviewPage.clickFinish();
             await expect(page.locator('.complete-header')).toHaveText('Thank you for your order!');
+        });
         });
     });
 });

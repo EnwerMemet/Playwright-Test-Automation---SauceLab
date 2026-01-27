@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Sauce Labs Backpack",
+    "price": "$29.99",
+    "id": "sauce-labs-backpack",
+    "description": "carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.",
+    "tags": ["popular", "featured", "backpack"]
+  },
+  {
+    "name": "Sauce Labs Bike Light",
+    "price": "$9.99",
+    "id": "sauce-labs-bike-light",
+    "description": "A red light isn't the desired state in testing but it sure helps when riding your bike at night.",
+    "tags": ["accessory", "light", "safety"]
+  },
+  {
+    "name": "Sauce Labs Bolt T-Shirt",
+    "price": "$15.99",
+    "id": "sauce-labs-bolt-t-shirt",
+    "description": "Get your testing superhero cape with this shirt featuring an exclusive Playwright logo.",
+    "tags": ["clothing", "t-shirt", "popular"]
+  },
+  {
+    "name": "Sauce Labs Fleece Jacket",
+    "price": "$49.99",
+    "id": "sauce-labs-fleece-jacket",
+    "description": "It's not every day that you come across a midweight quarter-zip fleece jacket capable of handling everything from a cool day to a cold day.",
+    "tags": ["clothing", "jacket", "premium"]
+  }
+]

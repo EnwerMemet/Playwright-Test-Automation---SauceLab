@@ -1,20 +1,20 @@
-import { test as base, expect } from '@playwright/test';
-import { LoginPage } from '../pages/LoginPage';
+import { test, expect } from '../lib/fixtures';
 import * as allure from "allure-js-commons";
 
-const test = base.extend<{ loginPage: LoginPage }>({
-  loginPage: async ({ page }, use) => {
-    await use(new LoginPage(page));
-  },
-});
-
-test.describe('Authentication Suite', () => {
+test.describe('@authentication Login & Security Tests', () => {
   const user = process.env.SAUCE_USERNAME || 'standard_user';
   const pass = process.env.SAUCE_PASSWORD || 'secret_sauce';
 
-  test('User should be able to login successfully @sanity @regression', async ({ loginPage, page }) => {
-    await allure.description("Valid login verification");
+  test.beforeEach(async () => {
+    await allure.epic("Authentication");
+    await allure.feature("Login Management");
     await allure.owner("Enwer");
+    await allure.tags("authentication", "login", "security");
+  });
+
+  test('User should be able to login successfully @sanity @regression @ui-login', async ({ loginPage, page }) => {
+    await allure.description("Valid login verification");
+    await allure.story("Standard User Login");
     await allure.severity("critical");
 
     await test.step('I navigate to the landing page and enter my valid credentials', async () => {
@@ -27,9 +27,10 @@ test.describe('Authentication Suite', () => {
     });
   });
 
-  test('API Login with Password bypass @advanced @performance', async ({ loginPage, page, context, request }) => {
+  test('API Login with Password bypass @advanced @performance @api-auth', async ({ loginPage, page, context, request }) => {
+    await allure.story("API Authentication Bypass");
     await allure.severity("critical");
-    await allure.story("Authentication Bypass");
+    await allure.tags("api", "authentication", "bypass");
 
     await test.step('I bypass the login UI by authenticating via API and injecting my session cookies', async () => {
       const response = await request.post('https://www.saucedemo.com/api/login', {
@@ -48,10 +49,11 @@ test.describe('Authentication Suite', () => {
     });
   });
 
-  test('Login page should show error for locked out user @regression', async ({ loginPage, page }) => {
+  test('Login page should show error for locked out user @regression @security @error-handling', async ({ loginPage, page }) => {
     await allure.description("Locked out user verification");
-    await allure.owner("Enwer");
+    await allure.story("Security Validation");
     await allure.severity("critical");
+    await allure.tags("security", "error-handling", "locked-user");
 
     const expectedError = 'Sorry, this user has been locked out.';
 
