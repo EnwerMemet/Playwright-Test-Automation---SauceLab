@@ -1,6 +1,9 @@
 import { test, expect } from '../lib/fixtures';
 import { env } from '../lib/env';
+import { URLS, LOGIN_SELECTORS, INVENTORY_SELECTORS, } from '../lib/constants';
+import { USERS, SUCCESS_MESSAGES, ERROR_MESSAGES } from '../lib/testData';
 import * as allure from "allure-js-commons";
+
 
 test.describe('Authentication Suite', () => {
 
