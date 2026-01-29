@@ -1,18 +1,14 @@
-import { test, expect } from '@playwright/test';
-import { LoginPage } from '../pages/LoginPage';
+import { test, expect } from '../lib/fixtures';
 import * as allure from "allure-js-commons";
 
 test.describe('Inventory & Storefront Functionality', () => {
-    let loginPage: LoginPage;
 
-    test.beforeEach(async ({ page, context }) => {
+    test.beforeEach(async ({ loginPage, context, page }) => {
         await allure.epic("Web Shop 1.0");
         await allure.feature("Inventory Management");
         await allure.owner("Enwer");
         await allure.tags("UI", "Regression");
         await allure.link("https://saucedemo.com", "Main Site");
-
-        loginPage = new LoginPage(page);
         const user = process.env.SAUCE_USERNAME || 'standard_user';
         
         await test.step('I am logged in and navigating to the product inventory', async () => {

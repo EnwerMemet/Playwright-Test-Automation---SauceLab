@@ -1,17 +1,7 @@
-import { test, expect } from '@playwright/test';
-import { LoginPage } from '../pages/LoginPage';
-import { InventoryPage } from '../pages/InventoryPage';
-import { CheckoutPage } from '../pages/CheckoutPage';
-import { CartPage } from '../pages/CartPage';
-import { OverviewPage } from '../pages/OverviewPage';
+import { test, expect } from '../lib/fixtures';
 import * as allure from "allure-js-commons";
 
-test('User should be able to add item to cart and checkout successfully @sanity @regression', async ({ page }) => {
-    const loginPage = new LoginPage(page);
-    const inventoryPage = new InventoryPage(page);
-    const cartPage = new CartPage(page);
-    const checkoutPage = new CheckoutPage(page);
-    const overviewPage = new OverviewPage(page);
+test('User should be able to add item to cart and checkout successfully @sanity @regression', async ({ loginPage, inventoryPage, cartPage, checkoutPage, overviewPage, page }) => {
 
     await allure.owner("Enwer");
     await allure.severity("critical");
