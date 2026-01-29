@@ -1,12 +1,5 @@
-import { test as base, expect } from '@playwright/test';
-import { LoginPage } from '../pages/LoginPage';
+import { test, expect } from '../lib/fixtures';
 import * as allure from "allure-js-commons";
-
-const test = base.extend<{ loginPage: LoginPage }>({
-  loginPage: async ({ page }, use) => {
-    await use(new LoginPage(page));
-  },
-});
 
 test.describe('Authentication Suite', () => {
   const user = process.env.SAUCE_USERNAME || 'standard_user';
