@@ -1,4 +1,5 @@
 import { test, expect } from '../lib/fixtures';
+import { env } from '../lib/env';
 import * as allure from "allure-js-commons";
 import products from '../data/products.json';
 
@@ -16,7 +17,7 @@ products.forEach((product) => {
 
         await test.step('Given I log into the application', async () => {
             await loginPage.navigateTo('/');
-            await loginPage.login(process.env.SAUCE_USERNAME || 'standard_user', process.env.SAUCE_PASSWORD || 'secret_sauce');
+            await loginPage.login(env.SAUCE_USERNAME, env.SAUCE_PASSWORD);
         });
 
         await test.step(`When I add ${product.name} to the cart`, async () => {

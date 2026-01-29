@@ -1,4 +1,5 @@
 import { test, expect } from '../lib/fixtures';
+import { env } from '../lib/env';
 import * as allure from "allure-js-commons";
 
 test.describe('Inventory & Storefront Functionality', () => {
@@ -9,10 +10,10 @@ test.describe('Inventory & Storefront Functionality', () => {
         await allure.owner("Enwer");
         await allure.tags("UI", "Regression");
         await allure.link("https://saucedemo.com", "Main Site");
-        const user = process.env.SAUCE_USERNAME || 'standard_user';
+
         
         await test.step('I am logged in and navigating to the product inventory', async () => {
-            await loginPage.loginViaCookie(context, user);
+            await loginPage.loginViaCookie(context, env.SAUCE_USERNAME);
             await loginPage.navigateTo('/inventory.html');
         });
     });

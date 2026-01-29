@@ -1,9 +1,8 @@
 import { test, expect } from '../lib/fixtures';
+import { env } from '../lib/env';
 import * as allure from "allure-js-commons";
 
 test.describe('Authentication Suite', () => {
-  const user = process.env.SAUCE_USERNAME || 'standard_user';
-  const pass = process.env.SAUCE_PASSWORD || 'secret_sauce';
 
   test('User should be able to login successfully @sanity @regression', async ({ loginPage, page }) => {
     await allure.description("Valid login verification");
@@ -12,7 +11,7 @@ test.describe('Authentication Suite', () => {
 
     await test.step('I navigate to the landing page and enter my valid credentials', async () => {
       await loginPage.navigateTo('/');
-      await loginPage.login(user, pass);
+      await loginPage.login(env.SAUCE_USERNAME, env.SAUCE_PASSWORD);
     });
 
     await test.step('I should be redirected to the products inventory page', async () => {
@@ -26,12 +25,12 @@ test.describe('Authentication Suite', () => {
 
     await test.step('I bypass the login UI by authenticating via API and injecting my session cookies', async () => {
       const response = await request.post('https://www.saucedemo.com/api/login', {
-        data: { username: user, password: pass }
+        data: { username: env.SAUCE_USERNAME, password: env.SAUCE_PASSWORD }
       });
       await allure.attachment("API Response", await response.text(), "application/json");
 
       await context.addCookies([{
-        name: 'session-username', value: user, domain: 'www.saucedemo.com', path: '/'
+        name: 'session-username', value: env.SAUCE_USERNAME, domain: 'www.saucedemo.com', path: '/'
       }]);
     });
 
