@@ -1,4 +1,5 @@
 import { test, expect } from '../lib/fixtures';
+import { env } from '../lib/env';
 import * as allure from "allure-js-commons";
 
 test('User should be able to add item to cart and checkout successfully @sanity @regression', async ({ loginPage, inventoryPage, cartPage, checkoutPage, overviewPage, page }) => {
@@ -8,7 +9,7 @@ test('User should be able to add item to cart and checkout successfully @sanity 
 
     await test.step('I log into the application with my credentials', async () => {
         await loginPage.navigateTo('/');
-        await loginPage.login(process.env.SAUCE_USERNAME || 'standard_user', process.env.SAUCE_PASSWORD || 'secret_sauce');
+        await loginPage.login(env.SAUCE_USERNAME, env.SAUCE_PASSWORD);
     });
 
     let firstName: string | null;

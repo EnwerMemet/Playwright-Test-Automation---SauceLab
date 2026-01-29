@@ -1,8 +1,5 @@
 import { test, expect } from '../lib/fixtures';
 import { env } from '../lib/env';
-import { URLS, LOGIN_SELECTORS, INVENTORY_SELECTORS} from '../lib/constants';
-import { ERROR_MESSAGES, USERS, SUCCESS_MESSAGES, COOKIE_CONFIG, API_ENDPOINTS} from '../lib/testData';
-import { TEST_DATA } from '../lib/testData';
 import * as allure from "allure-js-commons";
 
 test.describe('Authentication Suite', () => {
@@ -13,7 +10,7 @@ test.describe('Authentication Suite', () => {
     await allure.severity("critical");
 
     await test.step('I navigate to the landing page and enter my valid credentials', async () => {
-      await loginPage.navigateTo(URLS.LOGIN);
+      await loginPage.navigateTo('/');
       await loginPage.login(env.SAUCE_USERNAME, env.SAUCE_PASSWORD);
     });
 
@@ -27,13 +24,13 @@ test.describe('Authentication Suite', () => {
     await allure.story("Authentication Bypass");
 
     await test.step('I bypass the login UI by authenticating via API and injecting my session cookies', async () => {
-      const response = await request.post(`${env.BASE_URL}${API_ENDPOINTS.LOGIN}`, {
+      const response = await request.post('https://www.saucedemo.com/api/login', {
         data: { username: env.SAUCE_USERNAME, password: env.SAUCE_PASSWORD }
       });
       await allure.attachment("API Response", await response.text(), "application/json");
 
       await context.addCookies([{
-        name: 'session-username',         value: env.SAUCE_USERNAME, domain: COOKIE_CONFIG.DOMAIN, path: COOKIE_CONFIG.PATH
+        name: 'session-username', value: env.SAUCE_USERNAME, domain: 'www.saucedemo.com', path: '/'
       }]);
     });
 
