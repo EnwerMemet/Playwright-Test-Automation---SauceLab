@@ -13,7 +13,8 @@ test.describe('Inventory & Storefront Functionality', () => {
 
         
         await test.step('I am logged in and navigating to the product inventory', async () => {
-            await loginPage.loginViaCookie(context, env.SAUCE_USERNAME);
+            await loginPage.navigateTo('/');
+            await loginPage.login(env.SAUCE_USERNAME, env.SAUCE_PASSWORD);
             await loginPage.navigateTo('/inventory.html');
         });
     });

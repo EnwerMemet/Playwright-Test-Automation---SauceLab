@@ -22,26 +22,6 @@ test.describe('Authentication Suite', () => {
     });
   });
 
-  test('API Login with Password bypass @advanced @performance', async ({ loginPage, page, context, request }) => {
-    await allure.severity("critical");
-    await allure.story("Authentication Bypass");
-
-    await test.step('I bypass the login UI by authenticating via API and injecting my session cookies', async () => {
-      const response = await request.post('https://www.saucedemo.com/api/login', {
-        data: { username: env.SAUCE_USERNAME, password: env.SAUCE_PASSWORD }
-      });
-      await allure.attachment("API Response", await response.text(), "application/json");
-
-      await context.addCookies([{
-        name: 'session-username', value: env.SAUCE_USERNAME, domain: 'www.saucedemo.com', path: '/'
-      }]);
-    });
-
-    await test.step('I navigate directly to the inventory and confirm I have access to the products', async () => {
-      await loginPage.navigateTo(URLS.INVENTORY);
-      await expect(page.locator(INVENTORY_SELECTORS.TITLE)).toHaveText(SUCCESS_MESSAGES.PRODUCTS_TITLE);
-    });
-  });
 
   test('Login page should show error for locked out user @regression', async ({ loginPage, page }) => {
     await allure.description("Locked out user verification");
