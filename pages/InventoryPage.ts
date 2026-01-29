@@ -1,5 +1,6 @@
 import { Locator, Page } from '@playwright/test';
 import { BasePage } from './BasePage';
+import { INVENTORY_SELECTORS } from '../lib/constants';
 
 export class InventoryPage extends BasePage {
   readonly firstItemTitle: Locator;
@@ -10,10 +11,10 @@ export class InventoryPage extends BasePage {
 
   constructor(page: Page) {
     super(page);
-    this.firstItemTitle = page.locator('.inventory_item_name').first();
-    this.firstItemPrice = page.locator('.inventory_item_price').first();
-    this.firstItemAddToCartButton = page.locator('.btn_inventory').first();
-    this.shoppingCartLink = page.locator('.shopping_cart_link');
+    this.firstItemTitle = page.locator(INVENTORY_SELECTORS.ITEM_NAME).first();
+    this.firstItemPrice = page.locator(INVENTORY_SELECTORS.ITEM_PRICE).first();
+    this.firstItemAddToCartButton = page.locator(INVENTORY_SELECTORS.ADD_TO_CART_BUTTON).first();
+    this.shoppingCartLink = page.locator(INVENTORY_SELECTORS.SHOPPING_CART_LINK);
   }
 
   async getFirstItemName() {
