@@ -1,5 +1,7 @@
 import { test, expect } from '../lib/fixtures';
 import { env } from '../lib/env';
+import { URLS, INVENTORY_SELECTORS, PRODUCT_SELECTORS } from '../lib/constants';
+import { TEST_DATA } from '../lib/testData';
 import * as allure from "allure-js-commons";
 
 test.describe('Inventory & Storefront Functionality', () => {
@@ -13,9 +15,9 @@ test.describe('Inventory & Storefront Functionality', () => {
 
         
         await test.step('I am logged in and navigating to the product inventory', async () => {
-            await loginPage.navigateTo('/');
+            await loginPage.navigateTo(URLS.LOGIN);
             await loginPage.login(env.SAUCE_USERNAME, env.SAUCE_PASSWORD);
-            await loginPage.navigateTo('/inventory.html');
+            await loginPage.navigateTo(URLS.INVENTORY);
         });
     });
 
@@ -24,14 +26,14 @@ test.describe('Inventory & Storefront Functionality', () => {
         await allure.severity("critical");
 
         await test.step('I add the Sauce Labs Backpack to my cart', async () => {
-            await page.click('#add-to-cart-sauce-labs-backpack');
+            await page.click(PRODUCT_SELECTORS.SAUCE_LABS_BACKPACK_ADD);
             await allure.attachment("Action Log", "User added Sauce Labs Backpack to cart", "text/plain");
-            await expect(page.locator('.shopping_cart_badge')).toHaveText('1');
+            await expect(page.locator(INVENTORY_SELECTORS.SHOPPING_CART_BADGE)).toHaveText('1');
         });
 
         await test.step('I remove the item from my cart', async () => {
-            await page.click('#remove-sauce-labs-backpack');
-            await expect(page.locator('.shopping_cart_badge')).toBeHidden();
+            await page.click(PRODUCT_SELECTORS.SAUCE_LABS_BACKPACK_REMOVE);
+            await expect(page.locator(INVENTORY_SELECTORS.SHOPPING_CART_BADGE)).toBeHidden();
         });
     });
 
@@ -40,12 +42,12 @@ test.describe('Inventory & Storefront Functionality', () => {
         await allure.severity("normal");
 
         await test.step('I apply the "Low to High" price filter', async () => {
-            await page.selectOption('.product_sort_container', 'lohi');
+            await page.selectOption(INVENTORY_SELECTORS.PRODUCT_SORT_CONTAINER, 'lohi');
         });
 
         await test.step('I verify the cheapest item is listed first', async () => {
-            const firstPrice = await page.locator('.inventory_item_price').first().innerText();
-            expect(firstPrice).toBe('$7.99');
+            const firstPrice = await page.locator(INVENTORY_SELECTORS.ITEM_PRICE).first().innerText();
+            expect(firstPrice).toBe(TEST_DATA.LOW_PRICE);
         });
     });
 });

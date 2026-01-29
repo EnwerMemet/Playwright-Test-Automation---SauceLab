@@ -19,4 +19,13 @@ export class LoginPage extends BasePage {
     await this.passwordInput.fill(pass);
     await this.loginButton.click();
   }
+
+  async loginViaCookie(context: BrowserContext, username: string) {
+    await context.addCookies([{
+        name: COOKIE_CONFIG.SESSION_USERNAME,
+        value: username,
+        domain: COOKIE_CONFIG.DOMAIN,
+        path: COOKIE_CONFIG.PATH
+    }]);
+  }
 }

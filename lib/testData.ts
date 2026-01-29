@@ -29,12 +29,7 @@ export const TEST_DATA = {
   LOW_PRICE: '$7.99'
 } as const;
 
-// Cookie Configuration
-export const COOKIE_CONFIG = {
-  SESSION_USERNAME: 'session-username',
-  DOMAIN: 'www.saucedemo.com',
-  PATH: '/'
-} as const;
+
 
 // API Endpoints
 export const API_ENDPOINTS = {
