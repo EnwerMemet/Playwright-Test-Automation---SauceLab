@@ -1,6 +1,6 @@
 import { test, expect } from '../lib/fixtures';
 import { env } from '../lib/env';
-import { URLS, LOGIN_SELECTORS, INVENTORY_SELECTORS, } from '../lib/constants';
+import { URLS, LOGIN_SELECTORS } from '../lib/constants';
 import { USERS, SUCCESS_MESSAGES, ERROR_MESSAGES } from '../lib/testData';
 import * as allure from "allure-js-commons";
 
@@ -13,7 +13,7 @@ test.describe('Authentication Suite', () => {
     await allure.severity("critical");
 
     await test.step('I navigate to the landing page and enter my valid credentials', async () => {
-      await loginPage.navigateTo('/');
+      await loginPage.navigateTo(URLS.LOGIN);
       await loginPage.login(env.SAUCE_USERNAME, env.SAUCE_PASSWORD);
     });
 

@@ -1,5 +1,7 @@
 import { test, expect } from '../lib/fixtures';
 import { env } from '../lib/env';
+import { URLS, INVENTORY_SELECTORS, COMPLETE_SELECTORS } from '../lib/constants';
+import { TEST_DATA, SUCCESS_MESSAGES } from '../lib/testData';
 import * as allure from "allure-js-commons";
 
 test('User should be able to add item to cart and checkout successfully @sanity @regression', async ({ loginPage, inventoryPage, cartPage, checkoutPage, overviewPage, page }) => {
@@ -8,7 +10,7 @@ test('User should be able to add item to cart and checkout successfully @sanity 
     await allure.severity("critical");
 
     await test.step('I log into the application with my credentials', async () => {
-        await loginPage.navigateTo('/');
+        await loginPage.navigateTo(URLS.LOGIN);
         await loginPage.login(env.SAUCE_USERNAME, env.SAUCE_PASSWORD);
     });
 
@@ -25,14 +27,18 @@ test('User should be able to add item to cart and checkout successfully @sanity 
 
     await test.step('I verify that the correct item is in my cart and proceed to checkout', async () => {
         await expect(page).toHaveURL(/cart.html/);
-        await expect(page.locator('.inventory_item_name')).toHaveText(firstName!);
-        await expect(page.locator('.inventory_item_price')).toHaveText(firstPrice!);
+        await expect(page.locator(INVENTORY_SELECTORS.ITEM_NAME)).toHaveText(firstName!);
+        await expect(page.locator(INVENTORY_SELECTORS.ITEM_PRICE)).toHaveText(firstPrice!);
         await cartPage.clickCheckout();
     });
 
     await test.step('I fill in my personal shipping information', async () => {
         const suffix = Math.floor(Math.random() * 1000); 
-        await checkoutPage.fillInformation(`User${suffix}`, `Tester${suffix}`, `123${suffix}`);
+        await checkoutPage.fillInformation(
+            `${TEST_DATA.FIRST_NAME}${suffix}`, 
+            `${TEST_DATA.LAST_NAME}${suffix}`, 
+            `${TEST_DATA.POSTAL_CODE}${suffix}`
+        );
     });
 
     await test.step('I review my order summary and finalize the purchase', async () => {
@@ -43,6 +49,6 @@ test('User should be able to add item to cart and checkout successfully @sanity 
     });
 
     await test.step('I should see a confirmation message for my successful order', async () => {
-        await expect(page.locator('.complete-header')).toHaveText('Thank you for your order!');
+        await expect(page.locator(COMPLETE_SELECTORS.COMPLETE_HEADER)).toHaveText(SUCCESS_MESSAGES.ORDER_COMPLETE);
     });
 });
