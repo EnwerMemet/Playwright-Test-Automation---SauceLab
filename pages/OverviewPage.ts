@@ -1,5 +1,6 @@
 import { Locator, Page } from '@playwright/test';
 import { BasePage } from './BasePage';
+import { OVERVIEW_SELECTORS } from '../lib/constants';
 
 export class OverviewPage extends BasePage {
   readonly itemName: Locator;
@@ -8,9 +9,9 @@ export class OverviewPage extends BasePage {
 
   constructor(page: Page) {
     super(page);
-    this.itemName = page.locator('.inventory_item_name');
-    this.itemPrice = page.locator('.inventory_item_price');
-    this.finishButton = page.locator('[data-test="finish"]');
+    this.itemName = page.locator(OVERVIEW_SELECTORS.ITEM_NAME);
+    this.itemPrice = page.locator(OVERVIEW_SELECTORS.ITEM_PRICE);
+    this.finishButton = page.locator(OVERVIEW_SELECTORS.FINISH_BUTTON);
   }
 
   async clickFinish() {

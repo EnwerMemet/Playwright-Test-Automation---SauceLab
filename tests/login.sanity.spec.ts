@@ -35,8 +35,8 @@ test.describe('Authentication Suite', () => {
     });
 
     await test.step('I navigate directly to the inventory and confirm I have access to the products', async () => {
-      await loginPage.navigateTo('/inventory.html');
-      await expect(page.locator('.title')).toHaveText('Products');
+      await loginPage.navigateTo(URLS.INVENTORY);
+      await expect(page.locator(INVENTORY_SELECTORS.TITLE)).toHaveText(SUCCESS_MESSAGES.PRODUCTS_TITLE);
     });
   });
 
@@ -45,15 +45,15 @@ test.describe('Authentication Suite', () => {
     await allure.owner("Enwer");
     await allure.severity("critical");
 
-    const expectedError = 'Sorry, this user has been locked out.';
+    const expectedError = ERROR_MESSAGES.LOCKED_OUT;
 
     await test.step('I attempt to log in using a locked-out account', async () => {
-      await loginPage.navigateTo('/');
-      await loginPage.login('locked_out_user', 'secret_sauce');
+      await loginPage.navigateTo(URLS.LOGIN);
+      await loginPage.login(USERS.LOCKED_OUT, env.SAUCE_PASSWORD);
     });
 
     await test.step('I should see an error message stating that my account is locked out', async () => {
-      const errorLocator = page.locator('[data-test="error"]');
+      const errorLocator = page.locator(LOGIN_SELECTORS.ERROR_MESSAGE);
       await expect.soft(errorLocator).toBeVisible();
       await expect(errorLocator).toContainText(expectedError);
     });

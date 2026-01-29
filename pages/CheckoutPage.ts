@@ -1,5 +1,6 @@
 import { Locator, Page } from '@playwright/test';
 import { BasePage } from './BasePage';
+import { CHECKOUT_SELECTORS } from '../lib/constants';
 
 export class CheckoutPage extends BasePage {
   readonly firstNameInput: Locator;
@@ -9,10 +10,10 @@ export class CheckoutPage extends BasePage {
 
   constructor(page: Page) {
     super(page);
-    this.firstNameInput = page.locator('[data-test="firstName"]');
-    this.lastNameInput = page.locator('[data-test="lastName"]');
-    this.zipCodeInput = page.locator('[data-test="postalCode"]');
-    this.continueButton = page.locator('[data-test="continue"]');
+    this.firstNameInput = page.locator(CHECKOUT_SELECTORS.FIRST_NAME);
+    this.lastNameInput = page.locator(CHECKOUT_SELECTORS.LAST_NAME);
+    this.zipCodeInput = page.locator(CHECKOUT_SELECTORS.POSTAL_CODE);
+    this.continueButton = page.locator(CHECKOUT_SELECTORS.CONTINUE_BUTTON);
   }
 
   async fillInformation(fName: string, lName: string, zip: string) {
