@@ -5,7 +5,17 @@
   "main": "index.js",
   "scripts": {
     "test": "npx playwright test",
-    "test:sanity": "npx playwright test --grep @sanity"
+    "test:sanity": "npx playwright test --grep @sanity",
+    "test:dev": "NODE_ENV=development npx playwright test",
+    "test:staging": "NODE_ENV=staging npx playwright test",
+    "test:prod": "NODE_ENV=production npx playwright test",
+    "test:ci": "NODE_ENV=test npx playwright test",
+    "test:slow": "NODE_ENV=test SLOW_MO=true npx playwright test",
+    "test:headless": "NODE_ENV=production HEADLESS=true npx playwright test",
+    "env:dev": "echo 'Using .env.development'",
+    "env:staging": "echo 'Using .env.staging'",
+    "env:prod": "echo 'Using .env.production'",
+    "env:test": "echo 'Using .env.test'"
   },
   "repository": {
     "type": "git",
