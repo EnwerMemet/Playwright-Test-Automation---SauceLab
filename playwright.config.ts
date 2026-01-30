@@ -18,7 +18,7 @@ export default defineConfig({
     screenshot: 'only-on-failure',
     video: env.SLOW_MO ? 'on' : 'retain-on-failure', // Always record in slow mode
     trace: 'retain-on-failure',
-    headless: env.HEADLESS === false,
+    headless: env.HEADLESS === true,
   },
   
   projects: [
