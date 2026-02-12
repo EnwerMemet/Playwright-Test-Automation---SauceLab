@@ -30,6 +30,8 @@ export const INVENTORY_SELECTORS = {
 
 // Cart Page Selectors
 export const CART_SELECTORS = {
+  CARD_ITEM: '.cart_item',
+  CONTINUE_SHOPPING_BUTTON: '[data-test="continue-shopping"]',
   CHECKOUT_BUTTON: '[data-test="checkout"]'
 } as const;
 

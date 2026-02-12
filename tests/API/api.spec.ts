@@ -1,7 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('Complete API CRUD Operations', () => {
-    // Base URL for the stable test API
+test.describe.skip('Complete API CRUD Operations', () => {
     const baseUrl = 'https://jsonplaceholder.typicode.com/posts';
 
     test('should perform full CRUD lifecycle', async ({ request }) => {

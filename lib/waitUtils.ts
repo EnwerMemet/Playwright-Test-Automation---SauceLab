@@ -1,8 +1,12 @@
 // Wait and Timeout Configurations
 import { expect } from '@playwright/test';
-import { getTimeouts } from './timeoutConfig';
 
-export const TIMEOUTS = getTimeouts(1); // Default to 1x multiplier
+export const TIMEOUTS = {
+  SHORT: 5000,      // 5 seconds
+  MEDIUM: 10000,   // 10 seconds
+  LONG: 30000,      // 30 seconds
+  NAVIGATION: 15000  // 15 seconds
+} as const;
 
 export class WaitUtils {
   /**
